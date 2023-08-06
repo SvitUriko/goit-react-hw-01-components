@@ -1,31 +1,38 @@
-export const Profile = ({ avatar, username, location, stats, tag}) => {
+import { Card,
+  Description,
+  Image,
+  Username,
+  Usertag,
+  Location,
+  Stats,
+  Stat,
+  Label,
+  Quantity, } from "./Profile.styled"
 
-    return (<div className="profile">
-    <div className="description">
-      <img
-        src={avatar}
-        alt={tag}
-        className="avatar"
-      />
-      <p className="name">{username}</p>
-      <p className="tag">{tag}</p>
-      <p className="location">{location}</p>
-    </div>
-  
-    <ul className="stats">
-      <li>
-        <span className="label">Followers</span>
-        <span className="quantity">{stats.followers}</span>
-      </li>
-      <li>
-        <span className="label">Views</span>
-        <span className="quantity">{stats.views}</span>
-      </li>
-      <li>
-        <span className="label">Likes</span>
-        <span className="quantity">{stats.likes}</span>
-      </li>
-    </ul>
-  </div>)
+export const Profile = ({ avatar, username, location, stats, tag}) => {
+  return (
+    <Card>
+      <Description>
+        <Image src={avatar} alt={username} />
+        <Username>{username}</Username>
+        <Usertag>{tag}</Usertag>
+        <Location>{location}</Location>
+      </Description>
+
+      <Stats>
+        <Stat>
+          <Label>Followers</Label>
+          <Quantity>{stats.followers}</Quantity>
+        </Stat>
+        <Stat>
+          <Label>Views</Label>
+          <Quantity>{stats.views}</Quantity>
+        </Stat>
+        <Stat>
+          <Label>Likes</Label>
+          <Quantity>{stats.likes}</Quantity>
+        </Stat>
+      </Stats>
+    </Card>)
 
 }
