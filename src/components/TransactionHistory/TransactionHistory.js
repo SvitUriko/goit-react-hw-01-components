@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Body, Head, ItemVal, RowItem, Table, Title, TitleVal } from "./TransactionHistory.styled"
 
 export const TransactionHistory = ({items}) => {
@@ -12,13 +13,23 @@ export const TransactionHistory = ({items}) => {
         </Head>
         
         <Body>
-        {items.map(item => (
-            <RowItem key={item.id}>
-                <ItemVal>{item.type}</ItemVal>
-                <ItemVal>{item.amount}</ItemVal>
-                <ItemVal>{item.currency}</ItemVal>
+        {items.map(({ id, type, amount, currency })  => (
+            <RowItem key={id}>
+                <ItemVal>{type}</ItemVal>
+                <ItemVal>{amount}</ItemVal>
+                <ItemVal>{currency}</ItemVal>
             </RowItem>))} 
         </Body>
     </Table>)
 }
 
+TransactionHistory.propTypes = {
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        amount: PropTypes.string.isRequired,
+        currency: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+  };
